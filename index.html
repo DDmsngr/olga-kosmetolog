@@ -6,10 +6,8 @@
 <title>Ольга Китляш — Косметолог-эксперт • Санкт-Петербург</title>
 <meta name="description" content="Ольга Китляш — косметолог-эксперт в Санкт-Петербурге с 10-летним стажем. Системный подход к здоровью кожи." />
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Шрифты -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -45,48 +43,17 @@
   }
   h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: -0.01em; }
 
-  /* Анимация появления */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* Мягкие тени */
-  .soft-shadow { box-shadow: 0 10px 40px -15px rgba(63, 42, 30, 0.15); }
+  .soft-shadow { box-shadow: 0 10px 40px -15px rgba(63, 42, 30, 0.2); }
 
-  /* Линия-разделитель */
   .line-dec::after {
     content: ''; display: block; width: 40px; height: 1px;
     background: #D4A98A; margin-top: 16px;
   }
   .line-dec.center::after { margin: 16px auto 0; }
 
-  /* Слайдер до/после */
-  .ba-slider { position: relative; overflow: hidden; border-radius: 8px; }
-  .ba-slider img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .ba-after { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
-  .ba-handle {
-    position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
-    background: white; pointer-events: none; transform: translateX(-50%);
-  }
-  .ba-handle::after {
-    content: '⇄'; position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px; height: 40px; background: white; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #3F2A1E; font-size: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-
-  /* Градиентные плейсхолдеры */
-  .photo-placeholder {
-    background: linear-gradient(135deg, #E8C5A8 0%, #D4A98A 50%, #C49B7C 100%);
-    position: relative; overflow: hidden;
-  }
-  .photo-placeholder::after {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent 50%);
-  }
-
-  /* Кнопки */
   .btn-primary {
     background: #3F2A1E; color: #F8F4F0; padding: 16px 32px;
     border-radius: 999px; font-weight: 500; letter-spacing: 0.02em;
@@ -101,19 +68,11 @@
   }
   .btn-outline:hover { background: #3F2A1E; color: #F8F4F0; transform: translateY(-2px); }
 
-  /* Навигация */
-  nav.scrolled { background: rgba(248, 244, 240, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(63,42,30,0.08); }
+  nav.scrolled { background: rgba(248, 244, 240, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(63,42,30,0.08); }
 
-  /* Мобильное меню */
   #mobileMenu.open { max-height: 500px; opacity: 1; }
   #mobileMenu { max-height: 0; opacity: 0; transition: all 0.4s ease; overflow: hidden; }
 
-  /* Декор */
-  .ornament {
-    width: 60px; height: 60px; opacity: 0.15;
-  }
-
-  /* Карточка услуги */
   .service-card {
     background: white; padding: 40px 32px; border-radius: 4px;
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -128,17 +87,35 @@
   .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -15px rgba(63,42,30,0.2); }
   .service-card:hover::before { transform: scaleX(1); }
 
-  /* Этапы приёма */
   .step-number {
     font-family: 'Cormorant Garamond', serif;
     font-size: 48px; font-weight: 500; color: #D4A98A; line-height: 1;
+  }
+
+  /* Фото результатов */
+  .result-img {
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+  .result-img:hover { transform: scale(1.02); }
+  .result-img img {
+    width: 100%; display: block; object-fit: cover;
+  }
+
+  /* Герой — фото */
+  .hero-photo {
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    display: block; border-radius: 2px;
   }
 </style>
 </head>
 
 <body class="bg-cream text-coffee">
 
-<!-- ============== НАВИГАЦИЯ ============== -->
+<!-- ═══ НАВИГАЦИЯ ═══ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
     <a href="#home" class="flex flex-col leading-tight">
@@ -177,15 +154,17 @@
   </div>
 </nav>
 
-<!-- ============== HERO ============== -->
+<!-- ═══ HERO ═══ -->
 <section id="home" class="min-h-screen flex items-center pt-24 pb-16 relative overflow-hidden">
-  <div class="absolute top-20 right-10 opacity-[0.08]">
-    <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="#3F2A1E" stroke-width="0.5">
+  <!-- Декоративный круг -->
+  <div class="absolute top-20 right-10 opacity-[0.06] pointer-events-none">
+    <svg width="240" height="240" viewBox="0 0 100 100" fill="none" stroke="#3F2A1E" stroke-width="0.5">
       <circle cx="50" cy="50" r="45"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="15"/>
     </svg>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
+    <!-- Текст -->
     <div class="order-2 lg:order-1 reveal">
       <div class="flex items-center gap-3 mb-6">
         <div class="w-10 h-[1px] bg-peachDark"></div>
@@ -222,24 +201,30 @@
         </div>
         <div class="w-[1px] h-10 bg-coffee/20"></div>
         <div>
-          <div class="font-serif text-3xl text-coffee">Top</div>
+          <div class="font-serif text-3xl text-coffee">Топ</div>
           <div class="text-xs uppercase tracking-widest text-coffeeLight">2023</div>
         </div>
       </div>
     </div>
 
+    <!-- Фото Ольги (главное) -->
     <div class="order-1 lg:order-2 reveal">
       <div class="relative max-w-md mx-auto">
-        <div class="absolute -top-4 -left-4 w-full h-full border border-peachDark/30 rounded-sm"></div>
-        <div class="photo-placeholder aspect-[4/5] rounded-sm soft-shadow relative">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="0.5" opacity="0.6">
-              <circle cx="50" cy="40" r="15"/><path d="M 25 80 Q 50 55 75 80"/>
-            </svg>
-          </div>
-          <div class="absolute bottom-6 left-6 right-6 text-white">
-            <div class="text-xs uppercase tracking-widest opacity-80">фото</div>
-            <div class="font-serif text-xl italic">Ольга Китляш</div>
+        <!-- Рамка-тень -->
+        <div class="absolute -top-4 -left-4 w-full h-full border border-peachDark/30 rounded-sm pointer-events-none z-10"></div>
+        <div class="hero-photo aspect-[4/5] soft-shadow rounded-sm overflow-hidden">
+          <img
+            src="images/olga-hero.jpg"
+            alt="Ольга Китляш — косметолог-эксперт, Санкт-Петербург"
+            class="w-full h-full object-cover object-top"
+            loading="eager"
+          />
+        </div>
+        <!-- Бейдж -->
+        <div class="absolute bottom-6 left-6 right-6 z-20">
+          <div class="bg-cream/90 backdrop-blur-sm rounded-sm px-5 py-3 soft-shadow">
+            <div class="text-xs uppercase tracking-widest text-coffeeLight mb-0.5">Лучший косметолог России</div>
+            <div class="font-serif text-lg text-coffee">по работе с акне, 2023</div>
           </div>
         </div>
       </div>
@@ -247,12 +232,23 @@
   </div>
 </section>
 
-<!-- ============== ОБО МНЕ ============== -->
+<!-- ═══ ОБО МНЕ ═══ -->
 <section id="about" class="py-24 lg:py-32 bg-beige/40">
   <div class="max-w-6xl mx-auto px-6 lg:px-12 grid lg:grid-cols-5 gap-12 items-center">
+
+    <!-- Фото в форме с перчатками -->
     <div class="lg:col-span-2 reveal">
-      <div class="photo-placeholder aspect-[3/4] rounded-sm soft-shadow"></div>
+      <div class="aspect-[3/4] rounded-sm soft-shadow overflow-hidden">
+        <img
+          src="images/olga-about.jpg"
+          alt="Ольга Китляш — косметолог в кабинете"
+          class="w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+      </div>
     </div>
+
+    <!-- Текст -->
     <div class="lg:col-span-3 reveal">
       <div class="text-xs tracking-[0.3em] uppercase text-peachDark mb-4">Обо мне</div>
       <h2 class="text-4xl md:text-5xl lg:text-6xl mb-8 line-dec">Почему так?</h2>
@@ -269,6 +265,7 @@
         </p>
       </div>
 
+      <!-- Достижения -->
       <div class="grid grid-cols-2 gap-6 mt-10">
         <div class="border-l-2 border-peachDark pl-4">
           <div class="font-serif text-2xl text-coffee">Тренер</div>
@@ -276,14 +273,22 @@
         </div>
         <div class="border-l-2 border-peachDark pl-4">
           <div class="font-serif text-2xl text-coffee">Автор</div>
-          <div class="text-sm text-coffeeLight">книги «Система кожи»</div>
+          <div class="text-sm text-coffeeLight">книги «Скин-система»</div>
+        </div>
+        <div class="border-l-2 border-peachDark pl-4">
+          <div class="font-serif text-2xl text-coffee">Обучает</div>
+          <div class="text-sm text-coffeeLight">косметологов по всей России</div>
+        </div>
+        <div class="border-l-2 border-peachDark pl-4">
+          <div class="font-serif text-2xl text-coffee">Автор</div>
+          <div class="text-sm text-coffeeLight">клинических кейсов</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== ПЕРВЫЙ ПРИЁМ ============== -->
+<!-- ═══ ПЕРВЫЙ ПРИЁМ ═══ -->
 <section id="first-visit" class="py-24 lg:py-32">
   <div class="max-w-6xl mx-auto px-6 lg:px-12">
     <div class="text-center mb-16 reveal">
@@ -305,7 +310,6 @@
           Записывайтесь на «консультацию» или «консультация + процедура» — как вам удобнее.
         </p>
       </div>
-
       <div class="reveal service-card">
         <div class="step-number">02</div>
         <h3 class="text-2xl mt-3 mb-3">Анамнез</h3>
@@ -313,7 +317,6 @@
           Заполнение подробной анкеты: здоровье, питание, стресс, предыдущий уход.
         </p>
       </div>
-
       <div class="reveal service-card">
         <div class="step-number">03</div>
         <h3 class="text-2xl mt-3 mb-3">Диагностика</h3>
@@ -321,7 +324,6 @@
           Тщательный осмотр и диагностика состояния кожи — без спешки.
         </p>
       </div>
-
       <div class="reveal service-card">
         <div class="step-number">04</div>
         <h3 class="text-2xl mt-3 mb-3">Схема ухода</h3>
@@ -329,7 +331,6 @@
           Подбор индивидуальной схемы. Часто процедуру на первом приёме не делаю — нужен анализ.
         </p>
       </div>
-
       <div class="reveal service-card">
         <div class="step-number">05</div>
         <h3 class="text-2xl mt-3 mb-3">Рекомендации</h3>
@@ -337,7 +338,6 @@
           В течение 2 дней — подробные рекомендации и подбор домашнего ухода.
         </p>
       </div>
-
       <div class="reveal service-card">
         <div class="step-number">06</div>
         <h3 class="text-2xl mt-3 mb-3">Поддержка</h3>
@@ -349,7 +349,7 @@
   </div>
 </section>
 
-<!-- ============== УСЛУГИ ============== -->
+<!-- ═══ УСЛУГИ ═══ -->
 <section id="services" class="py-24 lg:py-32 bg-coffee text-cream">
   <div class="max-w-6xl mx-auto px-6 lg:px-12">
     <div class="text-center mb-16 reveal">
@@ -360,88 +360,58 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Услуга 1 -->
       <div class="reveal group p-8 border border-cream/15 hover:border-peach hover:bg-cream/5 transition-all duration-500 rounded-sm">
         <div class="w-12 h-12 mb-6 flex items-center justify-center border border-peach/50 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
-            <path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
         </div>
         <h3 class="font-serif text-2xl mb-3 text-cream">Биоревитализация</h3>
-        <p class="text-cream/70 leading-relaxed text-sm">
-          Биоревитализация и биореструктуризация — глубокое восстановление и увлажнение кожи.
-        </p>
+        <p class="text-cream/70 leading-relaxed text-sm">Биоревитализация и биореструктуризация — глубокое восстановление и увлажнение кожи.</p>
       </div>
 
-      <!-- Услуга 2 -->
       <div class="reveal group p-8 border border-cream/15 hover:border-peach hover:bg-cream/5 transition-all duration-500 rounded-sm">
         <div class="w-12 h-12 mb-6 flex items-center justify-center border border-peach/50 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
-            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
         </div>
         <h3 class="font-serif text-2xl mb-3 text-cream">Микротоки</h3>
-        <p class="text-cream/70 leading-relaxed text-sm">
-          Микротоковая терапия — лифтинг, тонус, улучшение микроциркуляции.
-        </p>
+        <p class="text-cream/70 leading-relaxed text-sm">Микротоковая терапия — лифтинг, тонус, улучшение микроциркуляции.</p>
       </div>
 
-      <!-- Услуга 3 -->
       <div class="reveal group p-8 border border-cream/15 hover:border-peach hover:bg-cream/5 transition-all duration-500 rounded-sm">
         <div class="w-12 h-12 mb-6 flex items-center justify-center border border-peach/50 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
         <h3 class="font-serif text-2xl mb-3 text-cream">Акне и постакне</h3>
-        <p class="text-cream/70 leading-relaxed text-sm">
-          Комплексное лечение акне, устранение причин и работа со следами.
-        </p>
+        <p class="text-cream/70 leading-relaxed text-sm">Комплексное лечение акне, устранение причин и работа со следами.</p>
       </div>
 
-      <!-- Услуга 4 -->
       <div class="reveal group p-8 border border-cream/15 hover:border-peach hover:bg-cream/5 transition-all duration-500 rounded-sm">
         <div class="w-12 h-12 mb-6 flex items-center justify-center border border-peach/50 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
-            <path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6z"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6z"/></svg>
         </div>
         <h3 class="font-serif text-2xl mb-3 text-cream">Купероз и розацеа</h3>
-        <p class="text-cream/70 leading-relaxed text-sm">
-          Бережная работа с сосудистыми нарушениями и чувствительной кожей.
-        </p>
+        <p class="text-cream/70 leading-relaxed text-sm">Бережная работа с сосудистыми нарушениями и чувствительной кожей.</p>
       </div>
 
-      <!-- Услуга 5 -->
       <div class="reveal group p-8 border border-cream/15 hover:border-peach hover:bg-cream/5 transition-all duration-500 rounded-sm">
         <div class="w-12 h-12 mb-6 flex items-center justify-center border border-peach/50 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
-            <path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="10"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="10"/></svg>
         </div>
         <h3 class="font-serif text-2xl mb-3 text-cream">Антивозрастные протоколы</h3>
-        <p class="text-cream/70 leading-relaxed text-sm">
-          Индивидуальные программы для зрелой кожи — результат, а не маскировка.
-        </p>
+        <p class="text-cream/70 leading-relaxed text-sm">Индивидуальные программы для зрелой кожи — результат, а не маскировка.</p>
       </div>
 
-      <!-- Услуга 6 -->
       <div class="reveal group p-8 border border-cream/15 hover:border-peach hover:bg-cream/5 transition-all duration-500 rounded-sm">
         <div class="w-12 h-12 mb-6 flex items-center justify-center border border-peach/50 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
-            <path d="M20 7L9 18l-5-5"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5"><path d="M20 7L9 18l-5-5"/></svg>
         </div>
         <h3 class="font-serif text-2xl mb-3 text-cream">Индивидуальные программы</h3>
-        <p class="text-cream/70 leading-relaxed text-sm">
-          Персональный подбор ухода и процедур под именно вашу кожу и цели.
-        </p>
+        <p class="text-cream/70 leading-relaxed text-sm">Персональный подбор ухода и процедур под именно вашу кожу и цели.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== ДЛЯ КОСМЕТОЛОГОВ ============== -->
+<!-- ═══ ДЛЯ КОЛЛЕГ ═══ -->
 <section id="for-pros" class="py-24 lg:py-32 bg-beige/40">
   <div class="max-w-6xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
     <div class="reveal">
@@ -460,11 +430,15 @@
         </li>
         <li class="flex items-start gap-3">
           <span class="text-peachDark mt-1">—</span>
-          <span>Автор сборника клинических случаев</span>
+          <span>Обучает косметологов по всей России работе с кожей, диагностике и безопасной работе с активами</span>
         </li>
         <li class="flex items-start gap-3">
           <span class="text-peachDark mt-1">—</span>
-          <span><strong class="text-coffee">Лучший косметолог 2023 года</strong></span>
+          <span>Автор ежегодных клинических случаев косметологов России</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-peachDark mt-1">—</span>
+          <span><strong class="text-coffee">Лучший косметолог России по работе с акне, 2023</strong></span>
         </li>
       </ul>
 
@@ -475,110 +449,131 @@
       </div>
     </div>
 
+    <!-- Фото с ноутбуком -->
     <div class="reveal">
-      <div class="photo-placeholder aspect-square rounded-sm soft-shadow"></div>
+      <div class="aspect-[3/4] rounded-sm soft-shadow overflow-hidden">
+        <img
+          src="images/olga-pro.jpg"
+          alt="Ольга Китляш — обучение косметологов"
+          class="w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============== РЕЗУЛЬТАТЫ ============== -->
+<!-- ═══ РЕЗУЛЬТАТЫ ═══ -->
 <section id="results" class="py-24 lg:py-32">
   <div class="max-w-6xl mx-auto px-6 lg:px-12">
     <div class="text-center mb-16 reveal">
       <div class="text-xs tracking-[0.3em] uppercase text-peachDark mb-4">Результаты</div>
       <h2 class="text-4xl md:text-5xl lg:text-6xl line-dec center">До / После</h2>
-      <p class="text-coffee/70 max-w-2xl mx-auto mt-8">
-        Реальные результаты клиентов. Перетащите ползунок, чтобы сравнить.
+      <p class="text-coffee/70 max-w-2xl mx-auto mt-8 text-lg">
+        Реальные результаты клиентов. Лечение акне, постакне, купероза — системный подход.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- До/После 1 -->
-      <div class="reveal ba-slider aspect-[4/5] soft-shadow" data-ba>
-        <div class="photo-placeholder" style="background: linear-gradient(135deg, #c9a58a 0%, #a87c5e 100%);">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-white/80 font-serif text-2xl italic">до</span>
-          </div>
-        </div>
-        <div class="ba-after photo-placeholder" style="background: linear-gradient(135deg, #e8c5a8 0%, #d4a98a 100%);">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-white font-serif text-2xl italic">после</span>
-          </div>
-        </div>
-        <div class="ba-handle"></div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="reveal result-img soft-shadow cursor-zoom-in" onclick="openLightbox('images/result-1.jpg')">
+        <img src="images/result-1.jpg" alt="Результат лечения акне — до и после" loading="lazy" />
       </div>
-
-      <!-- До/После 2 -->
-      <div class="reveal ba-slider aspect-[4/5] soft-shadow" data-ba>
-        <div class="photo-placeholder" style="background: linear-gradient(135deg, #b89480 0%, #8c6350 100%);">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-white/80 font-serif text-2xl italic">до</span>
-          </div>
-        </div>
-        <div class="ba-after photo-placeholder" style="background: linear-gradient(135deg, #e8c5a8 0%, #c49b7c 100%);">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-white font-serif text-2xl italic">после</span>
-          </div>
-        </div>
-        <div class="ba-handle"></div>
+      <div class="reveal result-img soft-shadow cursor-zoom-in" onclick="openLightbox('images/result-2.jpg')">
+        <img src="images/result-2.jpg" alt="Результат лечения акне — до и после" loading="lazy" />
+      </div>
+      <div class="reveal result-img soft-shadow cursor-zoom-in" onclick="openLightbox('images/result-3.jpg')">
+        <img src="images/result-3.jpg" alt="Результат лечения акне — до и после" loading="lazy" />
+      </div>
+      <div class="reveal result-img soft-shadow cursor-zoom-in" onclick="openLightbox('images/result-4.jpg')">
+        <img src="images/result-4.jpg" alt="Результат лечения акне — до и после" loading="lazy" />
       </div>
     </div>
 
-    <p class="text-center text-xs text-coffee/50 mt-8 tracking-widest uppercase">
-      Замените градиенты на реальные фото клиентов
+    <p class="text-center text-xs text-coffee/50 mt-6 tracking-widest uppercase">
+      Публикуется с согласия клиентов
     </p>
   </div>
 </section>
 
-<!-- ============== КНИГА ============== -->
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 cursor-zoom-out">
+  <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white opacity-70 hover:opacity-100 transition">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-sm" onclick="event.stopPropagation()" />
+</div>
+
+<!-- ═══ КНИГА ═══ -->
 <section id="book" class="py-24 lg:py-32 bg-gradient-to-br from-beige to-cream relative overflow-hidden">
-  <div class="absolute top-10 right-10 ornament">
+  <!-- Декор -->
+  <div class="absolute top-10 right-10 opacity-[0.08] pointer-events-none w-40 h-40">
     <svg viewBox="0 0 100 100" fill="none" stroke="#3F2A1E" stroke-width="0.5" class="w-full h-full">
       <circle cx="50" cy="50" r="48"/><circle cx="50" cy="50" r="35"/><circle cx="50" cy="50" r="22"/>
     </svg>
   </div>
 
-  <div class="max-w-5xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center relative">
-    <div class="reveal order-2 lg:order-1">
-      <div class="text-xs tracking-[0.3em] uppercase text-peachDark mb-4">Бесплатно</div>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl mb-6 line-dec">
-        «Система<br/><span class="italic">кожи»</span>
-      </h2>
-      <p class="text-coffee/80 leading-relaxed text-lg mb-8">
-        Подробный гид по домашнему уходу: совместимость активов, исправление ошибок, восстановление кожи. Всё, что я объясняю на консультациях — в одной книге.
-      </p>
+  <div class="max-w-5xl mx-auto px-6 lg:px-12 relative">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Текст -->
+      <div class="reveal order-2 lg:order-1">
+        <div class="text-xs tracking-[0.3em] uppercase text-peachDark mb-4">Бесплатно</div>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl mb-6 line-dec">
+          «Скин-система»
+        </h2>
+        <p class="text-coffee/80 leading-relaxed text-lg mb-8">
+          Подробный гид по домашнему уходу: совместимость активов, исправление ошибок, восстановление кожи. Всё, что я объясняю на консультациях — в одной книге.
+        </p>
 
-      <ul class="space-y-3 mb-10">
-        <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Как выстроить работающий уход</li>
-        <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Какие активы можно сочетать</li>
-        <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Частые ошибки и как их исправить</li>
-        <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Протоколы восстановления кожи</li>
-      </ul>
+        <ul class="space-y-3 mb-10">
+          <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Из чего состоит правильный уход</li>
+          <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Логика активов и таблица совместимости</li>
+          <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Календарь ухода на неделю</li>
+          <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> 10 сочетаний и ошибок, которые портят кожу</li>
+          <li class="flex items-start gap-3"><span class="text-peachDark">✓</span> Как понять, что кожа перегружена</li>
+        </ul>
 
-      <a href="#contact" class="btn-primary">Забрать книгу бесплатно</a>
-    </div>
+        <a href="https://t.me/kitliash" target="_blank" rel="noopener" class="btn-primary">
+          Забрать книгу бесплатно
+        </a>
+      </div>
 
-    <div class="reveal order-1 lg:order-2">
-      <div class="relative max-w-xs mx-auto">
-        <div class="bg-gradient-to-br from-coffee to-coffeeLight aspect-[3/4] rounded-sm soft-shadow p-8 flex flex-col justify-between text-cream relative">
-          <div>
-            <div class="text-xs tracking-widest uppercase text-peach mb-4">Ольга Китляш</div>
-            <div class="font-serif text-3xl italic leading-tight">Система<br/>кожи</div>
+      <!-- Фото книги + превью страниц -->
+      <div class="reveal order-1 lg:order-2">
+        <div class="grid grid-cols-3 gap-3">
+          <!-- Обложка — крупнее -->
+          <div class="col-span-2 row-span-2 rounded-sm overflow-hidden soft-shadow cursor-zoom-in" onclick="openLightbox('images/book-cover.jpg')">
+            <img
+              src="images/book-cover.jpg"
+              alt="Книга «Скин-система» — обложка"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-400"
+              loading="lazy"
+            />
           </div>
-          <div class="w-16 h-[1px] bg-peach"></div>
-          <div>
-            <div class="text-xs tracking-widest uppercase opacity-80">Гид по уходу</div>
-            <div class="font-serif text-sm italic mt-1">2024</div>
+          <!-- Страницы книги -->
+          <div class="rounded-sm overflow-hidden soft-shadow cursor-zoom-in" onclick="openLightbox('images/book-contents.jpg')">
+            <img
+              src="images/book-contents.jpg"
+              alt="Содержание книги «Скин-система»"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-400"
+              loading="lazy"
+            />
           </div>
-          <div class="absolute top-4 right-4 w-16 h-16 border border-peach/30 rounded-full"></div>
+          <div class="rounded-sm overflow-hidden soft-shadow cursor-zoom-in" onclick="openLightbox('images/book-intro.jpg')">
+            <img
+              src="images/book-intro.jpg"
+              alt="Введение книги «Скин-система»"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-400"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <div class="absolute -top-3 -left-3 w-full h-full border border-coffee/30 rounded-sm -z-10"></div>
+        <p class="text-xs text-coffee/40 text-center mt-3 tracking-widest uppercase">Нажмите на изображение, чтобы увеличить</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== КОНТАКТЫ ============== -->
+<!-- ═══ КОНТАКТЫ ═══ -->
 <section id="contact" class="py-24 lg:py-32">
   <div class="max-w-5xl mx-auto px-6 lg:px-12">
     <div class="text-center mb-16 reveal">
@@ -588,39 +583,68 @@
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
-      <a href="https://t.me/" target="_blank" class="reveal service-card text-center !block">
-        <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-peachDark/30 rounded-full">
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      <!-- Телефон/WhatsApp -->
+      <a href="tel:+79213592328" class="reveal service-card text-center !block group">
+        <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-peachDark/30 rounded-full group-hover:border-peachDark transition">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A98A" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.01 4.18 2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-2">Телефон</h3>
+        <p class="text-coffee/70 text-sm font-medium">+7 921 359 23 28</p>
+        <p class="text-coffee/40 text-xs mt-1">Звонок / WhatsApp</p>
+      </a>
+
+      <!-- Telegram личный -->
+      <a href="https://t.me/olga_kitlyash" target="_blank" rel="noopener" class="reveal service-card text-center !block group">
+        <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-peachDark/30 rounded-full group-hover:border-peachDark transition">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A98A" stroke-width="1.5">
             <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
           </svg>
         </div>
         <h3 class="font-serif text-2xl mb-2">Telegram</h3>
-        <p class="text-coffee/70 text-sm">@olga_kosmetolog</p>
+        <p class="text-coffee/70 text-sm font-medium">@olga_kitlyash</p>
+        <p class="text-coffee/40 text-xs mt-1">Написать напрямую</p>
       </a>
 
-      <a href="https://wa.me/" target="_blank" class="reveal service-card text-center !block">
-        <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-peachDark/30 rounded-full">
+      <!-- Instagram -->
+      <a href="https://instagram.com/kitliash.cosmo" target="_blank" rel="noopener" class="reveal service-card text-center !block group">
+        <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-peachDark/30 rounded-full group-hover:border-peachDark transition">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A98A" stroke-width="1.5">
-            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
-          </svg>
-        </div>
-        <h3 class="font-serif text-2xl mb-2">WhatsApp</h3>
-        <p class="text-coffee/70 text-sm">+7 (999) 000-00-00</p>
-      </a>
-
-      <a href="https://instagram.com/" target="_blank" class="reveal service-card text-center !block">
-        <div class="w-14 h-14 mx-auto mb-4 flex items-center justify-center border border-peachDark/30 rounded-full">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4A98A" stroke-width="1.5">
-            <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
           </svg>
         </div>
         <h3 class="font-serif text-2xl mb-2">Instagram</h3>
-        <p class="text-coffee/70 text-sm">@olga.kitlyash</p>
+        <p class="text-coffee/70 text-sm font-medium">@kitliash.cosmo</p>
+        <p class="text-coffee/40 text-xs mt-1">Фото, советы, результаты</p>
       </a>
     </div>
 
-    <div class="reveal bg-beige/50 p-8 md:p-12 rounded-sm text-center">
+    <!-- TG-канал — отдельным баннером -->
+    <div class="reveal mb-6">
+      <a href="https://t.me/kitliash" target="_blank" rel="noopener"
+        class="flex items-center gap-5 bg-coffee text-cream rounded-sm px-8 py-6 soft-shadow hover:bg-coffeeLight transition-all duration-400 group">
+        <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center border border-cream/30 rounded-full group-hover:border-peach transition">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8C5A8" stroke-width="1.5">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs uppercase tracking-widest text-peach mb-1">Telegram-канал</div>
+          <div class="font-serif text-2xl">t.me/kitliash</div>
+          <div class="text-cream/60 text-sm mt-1">Разборы кожи, полезные советы, клинические случаи</div>
+        </div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-40 group-hover:opacity-70 group-hover:translate-x-1 transition-all">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Адрес -->
+    <div class="reveal bg-beige/50 p-8 md:p-10 rounded-sm text-center">
       <div class="text-xs tracking-[0.3em] uppercase text-peachDark mb-3">Кабинет</div>
       <div class="font-serif text-2xl md:text-3xl text-coffee mb-2">Санкт-Петербург</div>
       <p class="text-coffee/70">Адрес и схему проезда высылаю после записи</p>
@@ -628,7 +652,7 @@
   </div>
 </section>
 
-<!-- ============== ФУТЕР ============== -->
+<!-- ═══ ФУТЕР ═══ -->
 <footer class="bg-coffee text-cream py-12">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
     <div class="text-center md:text-left">
@@ -636,25 +660,30 @@
       <div class="text-xs tracking-widest uppercase text-cream/60 mt-1">Косметолог-эксперт · СПб</div>
     </div>
     <div class="text-sm text-cream/60 text-center">
-      © 2024 Все права защищены
+      © 2026 Все права защищены
     </div>
-    <div class="flex gap-4">
-      <a href="#" class="w-10 h-10 border border-cream/30 rounded-full flex items-center justify-center hover:border-peach hover:bg-peach/10 transition">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+    <div class="flex gap-3">
+      <a href="https://t.me/olga_kitlyash" target="_blank" rel="noopener"
+        class="w-10 h-10 border border-cream/30 rounded-full flex items-center justify-center hover:border-peach hover:bg-peach/10 transition" aria-label="Telegram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
       </a>
-      <a href="#" class="w-10 h-10 border border-cream/30 rounded-full flex items-center justify-center hover:border-peach hover:bg-peach/10 transition">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+      <a href="https://t.me/kitliash" target="_blank" rel="noopener"
+        class="w-10 h-10 border border-cream/30 rounded-full flex items-center justify-center hover:border-peach hover:bg-peach/10 transition" aria-label="TG-канал">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/><line x1="15" y1="9" x2="11" y2="13"/></svg>
+      </a>
+      <a href="https://instagram.com/kitliash.cosmo" target="_blank" rel="noopener"
+        class="w-10 h-10 border border-cream/30 rounded-full flex items-center justify-center hover:border-peach hover:bg-peach/10 transition" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
       </a>
     </div>
   </div>
 </footer>
 
 <script>
-  // Навигация
+  // Навигация — затемнение при скролле
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
 
   // Мобильное меню
@@ -663,7 +692,7 @@
   menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-  // Анимация появления
+  // Анимация появления при скролле
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -671,28 +700,28 @@
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // До/После слайдер
-  document.querySelectorAll('[data-ba]').forEach(slider => {
-    const after = slider.querySelector('.ba-after');
-    const handle = slider.querySelector('.ba-handle');
-    let dragging = false;
+  // Lightbox для фотографий
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
 
-    const move = (x) => {
-      const rect = slider.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
-      after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-      handle.style.left = pct + '%';
-    };
+  function openLightbox(src) {
+    lightboxImg.src = src;
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
 
-    slider.addEventListener('mousedown', (e) => { dragging = true; move(e.clientX); });
-    window.addEventListener('mousemove', (e) => { if (dragging) move(e.clientX); });
-    window.addEventListener('mouseup', () => dragging = false);
-    slider.addEventListener('touchstart', (e) => { dragging = true; move(e.touches[0].clientX); });
-    window.addEventListener('touchmove', (e) => { if (dragging) move(e.touches[0].clientX); });
-    window.addEventListener('touchend', () => dragging = false);
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
   });
 </script>
 
